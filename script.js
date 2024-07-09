@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>Feels Like: ${Math.round(data.main.feels_like)}&deg;C</p>
 
                 <h4>Sunrise/Sunset:</h4>
-                <p>⛅: ${sunriseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
-                <p>🌕: ${sunsetTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
+                <p>⛅: ${sunriseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} AM</p>
+                <p>🌕: ${sunsetTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} PM</p>
             </div>
         `;
 
