@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Code Weather | Code Master</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="images/weather-icon.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="weather-app">
+        <header>
+            <img src="images/weather-icon.png" alt="Weather Logo" class="logo">
+            <h1>Code Weather</h1>
+        </header>
+        <main>
+            <div class="search-container">
+                <input type="text" id="city-input" placeholder="Enter city name...">
+                <button id="search-btn">Search</button>
+            </div>
+            <div id="weather-info" class="weather-info">
+                <!-- Weather information will be dynamically added here -->
+            </div>
+        </main>
+        <footer>
+            <div class="currentTime" id="currentTime">00:00</div>
+            &copy; 2024 <a href="www.codemaster.ltd">Code Master</a> All rights reserved.
+        </footer>
+        <div id="version"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
