@@ -1,14 +1,15 @@
 const apiKey = 'c67ad773870622c3699a639632c3351f'; // Replace with your OpenWeatherMap API key
 
 document.addEventListener('DOMContentLoaded', function () {
-    const Version = "1.0.0.0";
+    const Version = "1.1.0.0";
     const searchBtn = document.getElementById('search-btn');
     const cityInput = document.getElementById('city-input');
     const weatherInfo = document.getElementById('weather-info');
     const nowTime = document.getElementById('currentTime');
     const VersionShow = document.getElementById("version");
+    const mainLogo = document.getElementById("main-logo");
+    mainLogo.classList.remove('hidden');
     VersionShow.innerHTML = "Version: " + Version;
-
 
     setInterval(() => {
         nowTime.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
@@ -52,25 +53,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
 
-        // Format sunrise and sunset times
-        const sunriseTime = new Date(data.sys.sunrise * 1000);
-        const sunsetTime = new Date(data.sys.sunset * 1000);
-        const currentTime = new Date();
-
-        // Compare current time with sunrise and sunset times
-        if (currentTime > sunriseTime && currentTime < sunsetTime) {
-            // Daytime - set light mode
-            document.body.classList.add('light-mode');
-        } else {
-            // Nighttime - set dark mode
-            document.body.classList.remove('light-mode');
-        }
-
         const windSpeedMph = (data.wind.speed * 2.237).toFixed(1);
         const visibilityMi = (data.visibility / 1609.34).toFixed(1);
 
         weatherCard.innerHTML = `
-            <h2>${data.name}</h2>
+            <h2>${data.name}, ${data.sys.country}</h2>
             <div class="temperature">${Math.round(data.main.temp)}&deg;C</div>
             <div class="description">${capitalizeFirstLetter(data.weather[0].description)}</div>
             <img src="${iconUrl}" alt="Weather Icon" class="icon">
@@ -86,8 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p>Feels Like: ${Math.round(data.main.feels_like)}&deg;C</p>
 
                 <h4>Sunrise/Sunset:</h4>
-                <p>⛅: ${sunriseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} AM</p>
-                <p>🌕: ${sunsetTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} PM</p>
+                <p>Sunrise <img src="images/day.png" alt="Day Icon" class="day-icon">: <strong>${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</strong> | Sunset <img src="images/night.png" alt="Night Icon" class="night-icon">: <strong>${new Date(data.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</strong></p>
             </div>
         `;
 
