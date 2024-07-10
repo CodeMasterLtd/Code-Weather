@@ -1,31 +1,47 @@
-const apiKey = 'c67ad773870622c3699a639632c3351f'; // Replace with your OpenWeatherMap API key
-
 document.addEventListener('DOMContentLoaded', function () {
-    const Version = "1.1.0.0";
+    const apiKey = 'c67ad773870622c3699a639632c3351f'; // Replace with your OpenWeatherMap API key
+    const version = "1.1.1.0";
+
     const searchBtn = document.getElementById('search-btn');
     const cityInput = document.getElementById('city-input');
     const weatherInfo = document.getElementById('weather-info');
-    const nowTime = document.getElementById('currentTime');
-    const VersionShow = document.getElementById("version");
+    const currentTime = document.getElementById('currentTime');
+    const versionDisplay = document.getElementById("version");
     const mainLogo = document.getElementById("main-logo");
+
+    // Display current year dynamically
+    const cmyear = 2024;
+    const currentYear = new Date().getFullYear();
+    if (currentYear === cmyear) {
+        document.getElementById('currentYear').textContent = cmyear;
+    } else {
+        document.getElementById('currentYear').textContent = cmyear + " - " + currentYear;
+    }
+
+    // Show main logo and version
     mainLogo.classList.remove('hidden');
-    VersionShow.innerHTML = "Version: " + Version;
+    versionDisplay.textContent = "Version: " + version;
 
+    // Update current time every second
     setInterval(() => {
-        nowTime.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
-    }, 1000);
+        const now = new Date();
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        const formattedDate = now.toLocaleDateString('en-GB', options);
+        const formattedTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+        currentTime.textContent = formattedDate + ' | ' + formattedTime;
+    }, 0);
 
+    // Event listener for search button
     searchBtn.addEventListener('click', function () {
         const city = cityInput.value.trim();
-
         if (city === '') {
             alert('Please enter a city name.');
             return;
         }
-
         fetchWeather(city);
     });
 
+    // Fetch weather data from OpenWeatherMap API
     async function fetchWeather(city) {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
@@ -40,17 +56,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Display weather information on the page
     function displayWeather(data) {
         const weatherCard = document.createElement('div');
         weatherCard.classList.add('weather-card');
 
         const iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
 
-        // Function to capitalize the first letter of each word
+        // Capitalize function
         function capitalizeFirstLetter(str) {
-            return str.replace(/\b\w/g, function (char) {
-                return char.toUpperCase();
-            });
+            return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
         const windSpeedMph = (data.wind.speed * 2.237).toFixed(1);
