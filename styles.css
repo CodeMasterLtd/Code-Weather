@@ -7,23 +7,20 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #333;;
+    background-color: #333; /* Dark background */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     padding: 0;
-}
-
-.light-mode {
-    background-color: #f3f3f3;
-    color: #0c0c0c;
+    color: #f3f3f3; /* Light text color for dark mode */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for mode change */
 }
 
 .weather-app {
     text-align: center;
-    background-color: #ffffff46;
+    background-color: #ffffff46; /* Semi-transparent white background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -31,6 +28,7 @@ body {
     width: 100%;
     margin: auto;
     overflow: hidden; /* Prevent horizontal overflow */
+    position: relative; /* For absolute positioning of the mode toggle */
 }
 
 header {
@@ -43,12 +41,12 @@ header {
 .logo {
     width: 50px;
     height: 50px;
+    margin-right: 10px;
 }
 
-
 h1 {
-    font-size: 30x;
-    color: #242424fb;
+    font-size: 30px;
+    color: #242424fb; /* Darker shade for better contrast */
     margin: 0;
     text-align: center;
 }
@@ -73,22 +71,24 @@ main {
     border-radius: 4px;
     font-size: 16px;
     margin-right: 10px;
-    background: #000;
-    color: #fff;
+    background: #000; /* Dark background for input */
+    color: #fff; /* White text for input */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for mode change */
 }
 
 #search-btn {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Green button */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth transitions for hover */
 }
 
 #search-btn:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Slightly darker green on hover */
 }
 
 .weather-info {
@@ -96,29 +96,36 @@ main {
 }
 
 .weather-card {
-    background-color: #a7a6a6;
+    background-color: #a7a6a6; /* Light gray background */
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for mode change */
 }
 
 .weather-card h2 {
     margin-bottom: 10px;
     font-size: 24px;
-    color: #333;
+    color: #333; /* Dark text */
 }
 
 .weather-card .temperature {
     font-size: 36px;
     font-weight: bold;
-    color: #333;
+    color: #333; /* Dark text */
+}
+
+.temperature {
+    text-shadow: 2px 0 2px #520000;
 }
 
 .weather-card .description {
     font-size: 18px;
-    color: #555;
+    color: #555; /* Slightly lighter gray */
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .weather-card .icon {
@@ -133,22 +140,22 @@ main {
 
 .weather-card .details h4 {
     font-size: 20px;
-    color: #333;
+    color: #333; /* Dark text */
     margin-bottom: 10px;
     text-decoration: underline;
 }
 
 .weather-card .details p {
     font-size: 16px;
-    color: #333;
+    color: #333; /* Dark text */
     margin-bottom: 8px;
 }
 
 footer {
     font-size: 12px;
-    color: #a5a5a5;
+    color: #a5a5a5; /* Light gray */
     margin-top: 20px;
-    background-color: #000000;
+    background-color: #000000; /* Black background */
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -157,18 +164,19 @@ footer {
 .currentTime {
     font-size: 14px;
     font-weight: bold;
-    color: #ffffffa2;
+    color: #ffffffa2; /* Semi-transparent white */
     margin-bottom: 5px;
 }
 
 a {
     text-decoration: none;
-    color: #4caf4f7e;
+    color: #4caf4f7e; /* Light green */
+    transition: color 0.3s ease; /* Smooth transition for hover */
 }
 
 a:hover {
     text-decoration: none;
-    color: #4CAF50;
+    color: #4CAF50; /* Darker green on hover */
 }
 
 #version {
@@ -176,6 +184,7 @@ a:hover {
     font-weight: 600;
     margin-top: 10px;
     text-align: left;
+    color: #000;
 }
 
 .day-icon, .night-icon {
@@ -221,3 +230,4 @@ a:hover {
         height: 50px;
     }
 }
+
