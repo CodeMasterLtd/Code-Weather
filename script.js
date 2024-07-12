@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = 'c67ad773870622c3699a639632c3351f';
     const version = "1.2.0.0";
+    let error = false;
 
     const searchBtn = document.getElementById('search-btn');
     const cityInput = document.getElementById('city-input');
@@ -29,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const city = cityInput.value.trim();
         if (city === '') {
             displayError("Please enter a city name.");
+            setTimeout(function () {
+                searchBtn.style.backgroundColor = '';
+            }, 2000);
             return;
         }
 
@@ -48,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
             displayWeather(weatherData);
         } catch (error) {
             displayError('City not found. Please enter a valid city name.');
+            setTimeout(function () {
+                searchBtn.style.backgroundColor = '';
+            }, 2000);
             console.error('Error fetching weather data:', error);
         }
     }
