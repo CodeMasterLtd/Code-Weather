@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <title>Code Weather | Code Master</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" href="images/day.png">
-    <link rel="shortcut icon" href="images/day.png" type="image/png">
+    <link rel="apple-touch-icon" id="icon1">
+    <link rel="shortcut icon" id="icon2" type="image/png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
     <div class="weather-app">
         <header>
-            <img id="main-logo" src="images/day.png" alt="Code Weather" class="logo">           
+            <img id="main-logo" alt="Code Weather" class="logo">           
             <h1>Code Weather</h1>
         </header>
         <main>
+            <div class="srch">
             <div class="search-container">
-                <input type="text" id="city-input" placeholder="Enter city name...">
-                <button id="search-btn">Search</button>
+                <input type="search" id="city-input" placeholder="Enter city name...">      <div class="search-icon">
+                    <i id="search-btn" class="fas fa-search"></i>
+                </div>
+                <button id="search-btn2"><i class="fas fa-location-arrow"></i> Use my current location</button>
+                  </div>
             </div>
             <div id="weather-info" class="weather-info">
                 <!-- Weather information will be dynamically added here -->
@@ -26,10 +31,8 @@
         <footer>
             <div class="currentTime" id="currentTime"></div>
             ©<span id="currentYear"></span> <a href="http://www.codemaster.ltd">Code Master</a> All rights reserved.
-            <br>
-            Powered by <a href="https://openweathermap.org/">OpenWeather</a>
+            <div id="version"></div>
         </footer>
-        <div id="version"></div>
     </div>
     <script src="script.js"></script>
 </body>
